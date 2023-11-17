@@ -21,5 +21,19 @@ namespace SzoftArchHazi.Api.Controllers
             return null;
         }
 
+        [HttpDelete("DeleteEmployeeProfile")]
+        public void DeleteEmployeeProfile(int id)
+        {
+            ControllerUtils.FillRepos();
+            Employee EmployeeToRemove = new();
+            foreach (Employee employee in EmployeeRepository.Employees)
+            { if (employee.Id == id)
+                {
+                    EmployeeToRemove = employee;
+                }
+            }
+            EmployeeRepository.Employees.Remove(EmployeeToRemove);
+        }
+
     }
 }

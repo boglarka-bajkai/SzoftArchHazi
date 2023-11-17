@@ -30,6 +30,51 @@ namespace SzoftArchHazi.Api.Controllers
             return ProjectRepository.Projects;
         }
 
+        [HttpPost("AddProject")]
+        public void AddProject(Project newProject)
+        {
+            ControllerUtils.FillRepos();
+            ProjectRepository.Projects.Add(newProject);
+        }
+
+        [HttpDelete("DeleteProject")]
+        public void DeleteProject(int id) {
+            ControllerUtils.FillRepos();
+            Project ProjectToRemove = new();
+            foreach (Project project in ProjectRepository.Projects)
+            {
+                if (project.Id == id)
+                {
+                    ProjectToRemove = project;
+                }
+            }
+            ProjectRepository.Projects.Remove(ProjectToRemove);
+            List<OnDuty> OnDutiesToRemove = new List<OnDuty>();
+            List<int> DutiesToRemoveIds = new List<int>();
+            foreach (OnDuty onDuty in OnDutyRepository.Duties)
+            {
+                if (onDuty.ProjectId == id) { 
+                    OnDutiesToRemove.Add(onDuty);
+                    DutiesToRemoveIds.Add(onDuty.Id);
+                }
+            }
+            foreach (OnDuty onDuty in OnDutiesToRemove)
+            {
+                OnDutyRepository.Duties.Remove(onDuty);
+            }
+            List<OnDutyDate> OnDutyDatesToRemove = new List<OnDutyDate>();
+            foreach (OnDutyDate onDutyDate in OnDutyDateRepository.OnDutyDates)
+            {
+                if (DutiesToRemoveIds.Contains(onDutyDate.Id))
+                {
+                    OnDutyDatesToRemove.Add(onDutyDate);
+                }
+            }
+            foreach (OnDutyDate onDutyDate in OnDutyDatesToRemove)
+            {
+                OnDutyDateRepository.OnDutyDates.Remove(onDutyDate);
+            }
+        }
         
         [HttpGet("GetEmployeesForProject")]
         public IEnumerable<Employee> GetEmployeesForProject(int ProjectId)
