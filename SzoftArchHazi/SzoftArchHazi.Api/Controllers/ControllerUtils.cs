@@ -6,7 +6,6 @@ public class ControllerUtils {
         if (EmployeeRepository.Employees.Count == 0)
         {
             EmployeeRepository.CreateEmployees();
-
         }
         if (ProjectRepository.Projects.Count == 0)
         {

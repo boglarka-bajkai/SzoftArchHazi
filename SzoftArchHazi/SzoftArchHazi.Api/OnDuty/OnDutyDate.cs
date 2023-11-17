@@ -10,5 +10,7 @@ namespace SzoftArchHazi.Api
         public int OnDutyId { get; set; }    
         
         public DateTime DutyDay { get; set; }
+
+        public bool IsFixed { get; set; }
     }
 }

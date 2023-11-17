@@ -74,5 +74,29 @@ namespace SzoftArchHazi.Api.Controllers
             return onDutyDates;
         }
 
+        [HttpGet("GetOnDutiesForDate")]
+        public IEnumerable<OnDutyDTO> GetOnDutiesForDate(DateTime date)
+        {
+            ControllerUtils.FillRepos();
+            List<int> dutyIds = new List<int>();
+            foreach (OnDutyDate dutyDate in OnDutyDateRepository.OnDutyDates)
+            {
+                if (dutyDate.DutyDay.Equals(date))
+                {
+                    dutyIds.Add(dutyDate.OnDutyId);
+                }
+            }
+            List<OnDutyDTO> onDuties = new List<OnDutyDTO>();
+            foreach (OnDuty onDuty in OnDutyRepository.Duties)
+            {
+                if (dutyIds.Contains(onDuty.Id))
+                {
+                    onDuties.Add(ControllerUtils.CreateDTOFromOnDuty(onDuty));
+                }
+            }
+            return onDuties;
+
+        }
+
     }
 }

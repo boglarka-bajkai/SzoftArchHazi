@@ -4,12 +4,12 @@ public class OnDutyRepository {
 
     private static readonly int[] EmployeeIds = new[]
     {
-        0, 1, 2, 2, 2, 3, 4, 5
+        0, 1, 2, 2, 2, 3, 4, 5, 6
     };
 
     private static readonly int[] ProjectIds = new[]
     {
-        0, 1, 0, 1, 2, 1, 2, 2
+        0, 1, 0, 1, 2, 1, 2, 2, 2
     };
 
     public static void CreateDuties()
