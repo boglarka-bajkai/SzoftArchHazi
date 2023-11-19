@@ -1,0 +1,3 @@
+(localdb)\MSSQLLocalDB
+
+SzoftArchHf_DB_New.Program+SzoftArchContext
