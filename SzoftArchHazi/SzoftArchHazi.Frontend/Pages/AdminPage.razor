@@ -1,0 +1,80 @@
+﻿@page "/"
+@inherits AdminPageBase
+
+
+@if (Projects == null)
+{
+	<h3>Loading...</h3>
+}
+else
+{
+	<h3>Projects</h3>
+
+	@if (Projects.Count() > 0)
+	{
+		<MudTable Items="@Projects" CanCancelEdit=true OnCommitEditClick="@(() => SendEditButton_Clicked(projectIdToSend, @nameToSend, @descToSend, @startToSend, @endToSend))">
+			<HeaderContent>
+					<MudTh></MudTh>
+					<MudTh><b>id</b></MudTh>
+					<MudTh><b>name</b></MudTh>
+					<MudTh><b>desc</b></MudTh>
+					<MudTh><b>start</b></MudTh>
+					<MudTh><b>end</b></MudTh>
+			</HeaderContent>
+			<RowTemplate>
+						<MudTd>
+								<MudTreeView T="string">
+										<MudTreeViewItem Value="@("Employees")">
+												<MudTreeViewItem Value="@("Bob")" />
+												<MudTreeViewItem Value="@("John")" />
+										</MudTreeViewItem>
+								</MudTreeView>
+						</MudTd>
+				<MudTd>@context.Id</MudTd>
+						<MudTd DataLabel="Name">@context.Name</MudTd>
+						<MudTd DataLabel="Desc">@context.Description</MudTd>
+						<MudTd DataLabel="Start">@context.StartDate</MudTd>
+						<MudTd DataLabel="End">@context.EndDate</MudTd>
+						
+			</RowTemplate>
+				<RowEditingTemplate>
+				@{
+					projectIdToSend = context.Id;
+					nameToSend = context.Name;
+					descToSend = context.Description;
+					startToSend = context.StartDate;
+					endToSend = context.EndDate;
+							<MudTd>
+									<MudTreeView T="string">
+											<MudTreeViewItem Value="@("Employees")">
+													<MudTreeViewItem Value="@("Bob")" />
+													<MudTreeViewItem Value="@("John")" />
+											</MudTreeViewItem>
+									</MudTreeView>
+							</MudTd>
+							<MudTd>@context.Id</MudTd>
+							<MudTd DataLabel="Name"><MudTextField @bind-Value="@context.Name" T="string" Label="Edit name" Variant="Variant.Text" Lines="2" /></MudTd>
+							<MudTd DataLabel="Desc"><MudTextField @bind-Value="@context.Description" T="string" Label="Edit desc" Variant="Variant.Text" Lines="2" /></MudTd>
+							<MudTd DataLabel="Start"><MudTextField @bind-Value="@context.StartDate" T="DateTime" Label="Edit start" Variant="Variant.Text" Lines="2" /></MudTd>
+							<MudTd DataLabel="End"><MudTextField @bind-Value="@context.EndDate" T="DateTime" Label="Edit end" Variant="Variant.Text" Lines="2" /></MudTd>
+							
+				}
+				</RowEditingTemplate>
+		</MudTable>
+	}
+}
+
+@code {
+
+	public int projectIdToSend;
+	public string nameToSend;
+	public string descToSend;
+	public DateTime startToSend;
+	public DateTime endToSend;
+
+	public async void SendEditButton_Clicked(int taskId, string name, string desc, DateTime start, DateTime end)
+	{
+		//await TaskService.SendHint(taskId, hint);
+		Console.WriteLine("Sent to server!");
+	}
+}
