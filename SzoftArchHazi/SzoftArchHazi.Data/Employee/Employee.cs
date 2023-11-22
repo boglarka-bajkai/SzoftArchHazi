@@ -1,7 +1,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace SzoftArchHazi.Api
+namespace SzoftArchHazi.Data
 {
     public class Employee
     {
@@ -21,6 +21,5 @@ namespace SzoftArchHazi.Api
         public bool IsAdmin { get; set; }
 
         public List<OnDuty> Duties { get; set; } = new();
-        
     }
 }

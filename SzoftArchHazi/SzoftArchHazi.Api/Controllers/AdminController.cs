@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using SzoftArchHazi.Data;
 
 namespace SzoftArchHazi.Api.Controllers
 {
@@ -21,7 +22,7 @@ namespace SzoftArchHazi.Api.Controllers
         {
             ControllerUtils.FillRepos();
             List<EmployeeDTO> employees = new List<EmployeeDTO>();
-            EmployeeRepository.Employees.ForEach(e => { employees.Add(ControllerUtils.CreateDTOFromEmployee(e)); });
+            EmployeeRepository.Context.Employees.ToList().ForEach(e => { employees.Add(ControllerUtils.CreateDTOFromEmployee(e)); });
             return employees;
         }
 

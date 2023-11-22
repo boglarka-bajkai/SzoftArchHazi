@@ -1,3 +1,6 @@
+using System.Data.Common;
+using SzoftArchHazi.Data;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.

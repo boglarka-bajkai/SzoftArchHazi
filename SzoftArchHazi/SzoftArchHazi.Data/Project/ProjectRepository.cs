@@ -1,4 +1,4 @@
-using SzoftArchHazi.Api;
+using SzoftArchHazi.Data;
 
 public class ProjectRepository {
 
@@ -35,6 +35,19 @@ public class ProjectRepository {
             project.StartDate = DateTime.Parse(ProjectRepository.StartDate[i]);
             project.EndDate = DateTime.Parse(ProjectRepository.EndDate[i]);
             Projects.Add(project);
+        }
+    }
+    public static void CreateProjectsInDb(SzoftArchContext db)
+    {
+        for (int i = 0; i < Names.Length; i++)
+        {
+            Project project = new Project();
+            project.Name = Names[i];
+            project.Description = Description[i];
+            project.StartDate = DateTime.Parse(ProjectRepository.StartDate[i]);
+            project.EndDate = DateTime.Parse(ProjectRepository.EndDate[i]);
+            db.Projects.Add(project);
+            db.SaveChanges();
         }
     }
 }

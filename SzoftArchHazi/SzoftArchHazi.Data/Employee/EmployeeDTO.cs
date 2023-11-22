@@ -1,4 +1,4 @@
-namespace SzoftArchHazi.Api;
+namespace SzoftArchHazi.Data;
 
 public class EmployeeDTO {
 

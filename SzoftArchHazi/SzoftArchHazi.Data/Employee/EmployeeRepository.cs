@@ -1,8 +1,10 @@
-using SzoftArchHazi.Api;
+using SzoftArchHazi.Data;
 
 public class EmployeeRepository {
 
     public static List<Employee> Employees = new List<Employee>();
+
+    public static SzoftArchContext Context;
 
     private static readonly string[] FirstNames = new[]
     {
@@ -30,6 +32,21 @@ public class EmployeeRepository {
             employee.Password = Passwords[Random.Shared.Next(Passwords.Length)];
             employee.IsAdmin = false;
             Employees.Add(employee);
+        }
+    }
+
+    public static void CreateEmployeesInDb(SzoftArchContext db)
+    {
+        Context = db;
+        for (int i = 0; i < FirstNames.Length; ++i)
+        {
+            Employee employee = new Employee();
+            employee.Email = FirstNames[i] + "." + LastNames[i] + "@gmail.com";
+            employee.Name = FirstNames[i] + " " + LastNames[i];
+            employee.Password = Passwords[Random.Shared.Next(Passwords.Length)];
+            employee.IsAdmin = false;
+            db.Employees.Add(employee);
+            db.SaveChanges();
         }
     }
 

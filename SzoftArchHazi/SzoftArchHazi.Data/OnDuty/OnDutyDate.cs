@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace SzoftArchHazi.Api
+namespace SzoftArchHazi.Data
 {
     public class OnDutyDate
     {
