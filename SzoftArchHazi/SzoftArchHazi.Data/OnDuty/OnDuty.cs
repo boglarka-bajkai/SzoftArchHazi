@@ -1,5 +1,5 @@
 using System.ComponentModel.DataAnnotations.Schema;
-using SzoftArchHazi.Api;
+using SzoftArchHazi.Data;
 
 public class OnDuty {
 

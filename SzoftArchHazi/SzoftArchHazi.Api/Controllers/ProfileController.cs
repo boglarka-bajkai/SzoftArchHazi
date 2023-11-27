@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using SzoftArchHazi.Data;
 
 namespace SzoftArchHazi.Api.Controllers
 {

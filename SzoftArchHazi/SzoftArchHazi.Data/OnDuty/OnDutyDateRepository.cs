@@ -1,4 +1,4 @@
-using SzoftArchHazi.Api;
+using SzoftArchHazi.Data;
 
 public class OnDutyDateRepository {
 
@@ -23,6 +23,18 @@ public class OnDutyDateRepository {
             onDutyDates.OnDutyId = OnDutyIds[i];
             onDutyDates.DutyDay = DateTime.Parse(OnDutyDays[i]);
             OnDutyDates.Add(onDutyDates);
+        }
+    }
+
+    public static void CreateOnDutyDaysInDb(SzoftArchContext db)
+    {
+        for (int i = 0; i < OnDutyDays.Length; i++)
+        {
+            OnDutyDate onDutyDates = new OnDutyDate();
+            onDutyDates.OnDutyId = OnDutyIds[i];
+            onDutyDates.DutyDay = DateTime.Parse(OnDutyDays[i]);
+            db.OnDutyDates.Add(onDutyDates);
+            db.SaveChanges();
         }
     }
 
