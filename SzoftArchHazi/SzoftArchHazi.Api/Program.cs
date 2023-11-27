@@ -1,5 +1,4 @@
-using System.Data.Common;
-using SzoftArchHazi.Data;
+using Microsoft.Net.Http.Headers;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -24,5 +23,11 @@ app.UseHttpsRedirection();
 app.UseAuthorization();
 
 app.MapControllers();
+
+app.UseCors(policy =>
+		policy.WithOrigins("https://localhost:7223", "http://localhost:7223/")
+		.AllowAnyMethod()
+		.WithHeaders(HeaderNames.ContentType)
+);
 
 app.Run();
