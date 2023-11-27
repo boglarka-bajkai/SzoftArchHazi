@@ -6,7 +6,7 @@ namespace SzoftArchHazi.Data
     {
         public SzoftArchContext() : base("SzoftArchDB") 
         {
-            Database.SetInitializer<SzoftArchContext>(new DropCreateDatabaseAlways<SzoftArchContext>());
+            Database.SetInitializer<SzoftArchContext>(new SzoftArchDBInitializer());
         }
         public DbSet<Employee> Employees { get; set; }
         public DbSet<Project> Projects { get; set; }
@@ -15,10 +15,7 @@ namespace SzoftArchHazi.Data
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Employee>().ToTable("Employee");
-            modelBuilder.Entity<Project>().ToTable("Project");
-            modelBuilder.Entity<OnDuty>().ToTable("OnDuty");
-            modelBuilder.Entity<OnDutyDate>().ToTable("OnDutyDate");
+            base.OnModelCreating(modelBuilder);
         }
     }
 }

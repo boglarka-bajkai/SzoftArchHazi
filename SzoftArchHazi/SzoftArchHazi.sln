@@ -6,18 +6,13 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SzoftArchHazi.Frontend", "SzoftArchHazi.Frontend\SzoftArchHazi.Frontend.csproj", "{6E660E47-F98E-426A-8E4E-D33BDD9F3C86}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SzoftArchHazi.Api", "SzoftArchHazi.Api\SzoftArchHazi.Api.csproj", "{2DA05C1B-04FA-4678-9BF6-52E7F98EC36C}"
-<<<<<<< HEAD
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SzoftArchHazi.Data", "SzoftArchHazi.Data\SzoftArchHazi.Data.csproj", "{FCB862D8-B308-4759-9647-9D1C091CA475}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SzoftArchHazi.Common", "SzoftArchHazi.Common\SzoftArchHazi.Common.csproj", "{DEC91F69-741D-49A3-A1AF-30194060461E}"
-=======
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SzoftArchHazi.Common", "SzoftArchHazi.Common\SzoftArchHazi.Common.csproj", "{DEC91F69-741D-49A3-A1AF-30194060461E}"
 	ProjectSection(ProjectDependencies) = postProject
 		{FCB862D8-B308-4759-9647-9D1C091CA475} = {FCB862D8-B308-4759-9647-9D1C091CA475}
 	EndProjectSection
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SzoftArchHazi.Data", "SzoftArchHazi.Data\SzoftArchHazi.Data.csproj", "{FCB862D8-B308-4759-9647-9D1C091CA475}"
->>>>>>> develop
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

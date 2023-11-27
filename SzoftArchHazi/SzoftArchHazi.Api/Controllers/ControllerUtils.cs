@@ -6,10 +6,6 @@ using SzoftArchHazi.Data;
 public class ControllerUtils {
     public static void FillRepos()
     {
-        DbProviderFactories.RegisterFactory("System.Data.SqlClient", System.Data.SqlClient.SqlClientFactory.Instance);
-        SzoftArchContext context = new SzoftArchContext();
-        EmployeeRepository.Context = context;
-
         if (EmployeeRepository.Employees.Count == 0)
         {
             EmployeeRepository.CreateEmployees();
