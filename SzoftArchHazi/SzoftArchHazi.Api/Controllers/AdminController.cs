@@ -22,7 +22,7 @@ namespace SzoftArchHazi.Api.Controllers
         {
             ControllerUtils.FillRepos();
             List<EmployeeDTO> employees = new List<EmployeeDTO>();
-            EmployeeRepository.Context.Employees.ToList().ForEach(e => { employees.Add(ControllerUtils.CreateDTOFromEmployee(e)); });
+            EmployeeRepository.Employees.ToList().ForEach(e => { employees.Add(ControllerUtils.CreateDTOFromEmployee(e)); });
             return employees;
         }
 
